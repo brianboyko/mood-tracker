@@ -41,13 +41,19 @@ export default class App extends Component {
   constructor (props) {
     super(props);
     this.componentDidMount = this.componentDidMount.bind(this);
+    this.state = {
+      moo: [],
+    }
   }
 
   componentDidMount(){
     console.log("Foo")
     this.props.actions.addOne();
+    let temp;
     setInterval(() => {
       this.props.actions.addOne()
+      temp = this.props.getStore();
+      this.setState({moo: this.state.moo.concat(Math.random())})
     }, 1000)
   }
 
@@ -64,6 +70,7 @@ export default class App extends Component {
               label="this.props"
               value={ this.props }/>
               <div>{this.props.myTest}</div>
+              <div>{this.state.moo.map((x) => (<div>{JSON.stringify(x)}</div>))}</div>
         </div>
       </MuiThemeProvider>
     );
