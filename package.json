@@ -1,0 +1,20 @@
+{
+  "name": "ReactPack",
+  "version": "0.0.1",
+  "description": "Brian's Personal React Boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "serve": "webpack-dev-server --progress --colors"
+  },
+  "author": "Brian Boyko",
+  "license": "BSD-2-Clause",
+  "devDependencies": {
+    "webpack": "~1.13.0",
+    "webpack-dev-server": "~1.14.1",
+    "style-loader": "~0.13.1",
+    "node-libs-browser": "~1.0.0",
+    "html-webpack-plugin": "~2.16.0",
+    "css-loader": "~0.23.1"
+  }
+}

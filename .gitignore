@@ -1,0 +1,14 @@
+# build directory #
+###################
+build
+
+# Logs and databases #
+######################
+*.log
+
+# OS generated files #
+######################
+
+# Node Modules #
+###############
+node_modules
