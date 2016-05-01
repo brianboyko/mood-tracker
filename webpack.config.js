@@ -23,13 +23,19 @@ module.exports = {
         test: /\.css$/,
         loaders: ['style', 'css'],
         include: path.resolve(ROOT_PATH, 'css')
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "babel-loader"
       }
     ]
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlwebpackPlugin({
-      title: 'React Redux Webpack Boilerplate'
+      filename: 'index.html',
+      template: 'client/src/static/index.html'
     })
   ]
 };
