@@ -30,7 +30,7 @@ import { HYDRATE } from '../constants/index'
 
 let logger = createLogger({
   duration: true,
-  timestamp: true, // I prefer to create timestamps. This way I have an idea of how long it took each action to render; I also can use this data to simulate 'real time' recreations. 
+  timestamp: true, // I prefer to create timestamps. This way I have an idea of how long it took each action to render; I also can use this data to simulate 'real time' recreations.
   collapsed: true,
 });
 
