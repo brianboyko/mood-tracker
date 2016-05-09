@@ -12,3 +12,7 @@ build
 # Node Modules #
 ###############
 node_modules
+
+# Stage01 #
+#############
+stage01/node_modules
