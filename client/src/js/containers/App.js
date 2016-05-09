@@ -47,7 +47,6 @@ export default class App extends Component {
   }
 
   componentDidMount(){
-    console.log("Foo")
     this.props.actions.addOne();
     let temp;
     setInterval(() => {
