@@ -26,13 +26,17 @@ import createLogger from 'redux-logger';
 // import { localLog, logToLocal } from '../utilities/loggers'
 
 // We only need
-import { HYDRATE } from '../constants/index'
+import { HYDRATE } from '../constants/actions'
 
 let logger = createLogger({
   duration: true,
   timestamp: true, // I prefer to create timestamps. This way I have an idea of how long it took each action to render; I also can use this data to simulate 'real time' recreations.
   collapsed: true,
 });
+
+if (window === undefined){
+  var window = {};
+} // needed for testing.
 
 const enhancer = compose(
   applyMiddleware(
@@ -41,13 +45,12 @@ const enhancer = compose(
     logger, // visual displays for the console.log (remove/commentout in production)
     //logToLocal // similar to logger but logs to local memory and can be accessed by application. s
   ),
-
-  window.devToolsExtension ? window.devToolsExtension() : f => f // for chrome Redux Dev Tools.
-
+    window.devToolsExtension ? window.devToolsExtension() : f => f // for chrome Redux Dev Tools.
 );
 
 function configureStore(initialState) {
-  // Note: only Redux >= 3.1.0 supports passing enhancer as third argument.
+  // Note: only Redux >= 3.1.0 supports passing enhancer as third argument.  if (window !== undefined){ // need this line because tests do not run in browser
+
   // See https://github.com/rackt/redux/releases/tag/v3.1.0
   const storeFunc = createStore(rootReducer, initialState, enhancer);
 
@@ -93,4 +96,5 @@ export {
   backupStore,
   restoreStore,
   getStore,
+  backup,
 }
