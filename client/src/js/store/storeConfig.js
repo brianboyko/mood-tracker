@@ -38,13 +38,19 @@ if (window === undefined){
   var window = {};
 } // needed for testing.
 
+let middlewareArgs = [
+  thunkMiddleware, // allows you to dispatch functions as actions.
+  multi, // allows you to dispatch multiple actions from one action creator
+  //logToLocal // similar to logger but logs to local memory and can be accessed by application.
+  ];
+
+// just cause I don't want logger clogging up my terminal when I run Mocha.
+if(process.env.NODE_ENV !== 'testing') {
+  middlewareArgs.push(logger); // visual displays for the console.log
+}
+
 const enhancer = compose(
-  applyMiddleware(
-    thunkMiddleware, // allows you to dispatch functions as actions.
-    multi, // allows you to dispatch multiple actions from one action creator
-    logger, // visual displays for the console.log (remove/commentout in production)
-    //logToLocal // similar to logger but logs to local memory and can be accessed by application. s
-  ),
+  applyMiddleware.apply(this, middlewareArgs),
     window.devToolsExtension ? window.devToolsExtension() : f => f // for chrome Redux Dev Tools.
 );
 

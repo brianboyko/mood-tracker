@@ -1,3 +1,4 @@
+require('./setup.js')
 import {assert} from 'chai';
 import _ from 'lodash';
 import store, {backupStore, restoreStore, getStore, backup} from '../client/src/js/store/storeConfig';
