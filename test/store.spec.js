@@ -4,8 +4,6 @@ import _ from 'lodash';
 import store, {backupStore, restoreStore, getStore, backup} from '../client/src/js/store/storeConfig';
 import actions from '../client/src/js/actions'
 
-console.log("store", store)
-
 describe('store', () => {
   let test = {type: 'ADD_ONE'};
   it('should have a dispatch and getState function', () => {

@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register",
+    "test:watch": "mocha --watch --reporter nyan --compilers js:babel-core/register",
     "serve": "webpack-dev-server --progress --colors"
   },
   "author": "Brian Boyko",
@@ -18,6 +19,7 @@
     "chai": "^3.5.0",
     "enzyme": "^2.2.0",
     "file-loader": "^0.8.5",
+    "istanbul": "^0.4.3",
     "mocha": "^2.4.5",
     "react-router": "^2.4.0",
     "react-router-redux": "^4.0.4",
