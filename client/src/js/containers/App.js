@@ -37,7 +37,7 @@ const obj = { foo: 123, bar: { baz: "hello" }};
 
 
 
-export default class App extends Component {
+class App extends Component {
   constructor (props) {
     super(props);
     this.componentDidMount = this.componentDidMount.bind(this);

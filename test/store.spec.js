@@ -4,14 +4,22 @@ import _ from 'lodash';
 import store, {backupStore, restoreStore, getStore, backup} from '../client/src/js/store/storeConfig';
 import actions from '../client/src/js/actions'
 
+
 describe('store', () => {
   let test = {type: 'ADD_ONE'};
+  let clearTest = {type: 'CLEAR_TO_DEFAULT'}
+
   it('should have a dispatch and getState function', () => {
     assert(store.hasOwnProperty('dispatch'));
     assert(store.hasOwnProperty('getState'));
   })
   it('getStore() should be identical to store.getState()', () => {
     assert(_.isEqual(store.getState(), getStore()))
+  })
+  it('should clear to default', () => {
+    store.dispatch(test);
+    store.dispatch(clearTest);
+    assert(_.isEqual(store.getState(), {mytest: 0}))
   })
   it('even (and especially) after changes', () => {
     store.dispatch(test);

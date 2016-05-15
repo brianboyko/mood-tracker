@@ -1,49 +1,65 @@
 require('./setup.js')
 
-import {assert, expect} from 'chai';
+import {assert} from 'chai';
+import expect from 'expect'
 import _ from 'lodash';
 import { reduxify } from '../client/src/js/utilities/reduxify'
 import * as actions from '../client/src/js/actions'
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes, Component } from 'react';
+import ReactDOM from 'react-dom';
 import { mount, shallow } from 'enzyme';
 import {Provider} from 'react-redux';
-import store from '../client/src/js/store/storeConfig'
+import TestUtils from 'react-addons-test-utils'
+import { CLEAR_TO_DEFAULT } from '../client/src/js/constants/actions';
+import store, {backupStore, restoreStore, getStore, backup} from '../client/src/js/store/storeConfig';
 
-class Child extends Component {
-   render() {
-     return (<div>{JSON.stringify(this.props)}</div>)
-   }
- }
-Child = reduxify(actions, Child);
+describe('Reduxify', () => {
 
-const testWrapper = shallow(
-  <Provider store={store}>
-    <Child />
-  </Provider>)
+  class ChildClass extends Component {
+    render() {
+      return <div />
+    }
+  }
 
-
-describe('reduxify', () => {
+  ChildClass.contextTypes = {
+    store: PropTypes.object.isRequired
+  }
 
 
-  xit('should map store state to props', () => {
-    expect(testWrapper.find(Child).props()).to.equal(0)
-  });
-  xit('should map actions props', () => {
-    assert(wrapper.props.hasOwnProperty('actions'));
-    assert(wrapper.props.actions.hasOwnProperty('addOne'))
-    assert(wrapper.props.actions.hasOwnProperty('hydrate'))
-  });
-  xit('should have a dispatch property', () => {
-    assert(wrapper.props.hasOwnProperty('dispatch'));
-  });
-  xit('should have a getStore property', () => {
-    assert(wrapper.props.hasOwnProperty('getStore'));
-  });
-  xit('should dispatch actions with dispatch', () => {
-    it('should also get state with getStore()', () => {
-      assert(_.isEqual({mytest: 0}), wrapper.props.getStore())
-      wrapper.props.dispatch(actions.default.addOne());
-      assert(_.isEqual({mytest: 1}), wrapper.props.getStore())
-    });
-  });
+  var Child = reduxify(actions, ChildClass)
+
+  const tree = TestUtils.renderIntoDocument(
+    <Provider store={store}>
+      <Child />
+    </Provider>
+  )
+  it('should add the store to the child context', () => {
+    const spy = expect.spyOn(console, 'error')
+    spy.destroy()
+    expect(spy.calls.length).toBe(0)
+
+    const child = TestUtils.findRenderedComponentWithType(tree, Child)
+    expect(child.context.store).toBe(store)
+  })
+  it('should add the actions to the child context', () => {
+    const spy = expect.spyOn(console, 'error')
+
+    spy.destroy()
+    expect(spy.calls.length).toBe(0)
+
+    const child = TestUtils.findRenderedComponentWithType(tree, Child)
+    expect(_.isEqual(child.dispatchProps.actions, actions.default))
+  })
+  it('should add the actions to the child context', () => {
+    const spy = expect.spyOn(console, 'error')
+
+    spy.destroy()
+    expect(spy.calls.length).toBe(0)
+
+    const child = TestUtils.findRenderedComponentWithType(tree, Child)
+    store.dispatch(actions.default.clearToDefault);
+    // console.log(store.getState());
+    // console.log(child)
+    expect(_.isEqual(child.dispatchProps.actions, actions.default))
+  })
 })
