@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for store/storeConfig.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">store/</a> storeConfig.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>37/37</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">70% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>7/10</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>5/5</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>23/23</span>
+      </div>
+      <div class='fl pad1y'>
+        <span class="strong">1 statement</span>
+        <span class="quiet">Ignored</span>  &nbsp;&nbsp;&nbsp;&nbsp;
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// ==========================
+// ./store/configureStore.js
+// ==========================
+&nbsp;
+import { createStore, applyMiddleware, compose } from 'redux';
+// Thunk middleware allows us to dispatch functions through our reducers,
+//  instead of just objects.
+// This is useful for writing asynchronous code.
+import thunkMiddleware from 'redux-thunk';
+&nbsp;
+// Multi is a tool that allows us to dispatch multiple actions at once. (It just
+//  helps with keeping code clean and maintainable.);
+import multi from 'redux-multi';
+&nbsp;
+// rootReducer is a collection of all our reducers, put into a single passage.
+import rootReducer from '../reducers';
+&nbsp;
+// Redux Logger will display previous state, the action, and the next state in
+// the console automatically. This is *extremely* helpful for debugging.
+import createLogger from 'redux-logger';
+&nbsp;
+// Eventually, we will have functionality which will allow us to capture all the actions
+// as they are created, and store it in a local variable: localLog. (logToLocal is the
+// function which we use to add items to localLog)
+&nbsp;
+// import { localLog, logToLocal } from '../utilities/loggers'
+&nbsp;
+// We only need
+import { HYDRATE } from '../constants/actions'
+&nbsp;
+let logger = createLogger({
+  duration: true,
+  timestamp: true, // I prefer to create timestamps. This way I have an idea of how long it took each action to render; I also can use this data to simulate 'real time' recreations.
+  collapsed: true,
+});
+&nbsp;
+<span class="missing-if-branch" title="else path not taken" >E</span>if (window === undefined){
+  var window = {};
+} // needed for testing.
+&nbsp;
+let middlewareArgs = [
+  thunkMiddleware, // allows you to dispatch functions as actions.
+  multi, // allows you to dispatch multiple actions from one action creator
+  //logToLocal // similar to logger but logs to local memory and can be accessed by application.
+  ];
+&nbsp;
+// just cause I don't want logger clogging up my terminal when I run Mocha.
+<span class="missing-if-branch" title="if path not taken" >I</span>if(process.env.NODE_ENV !== 'testing') {
+  middlewareArgs.push(logger); // visual displays for the console.log
+}
+&nbsp;
+const enhancer = compose(
+  applyMiddleware.apply(this, middlewareArgs),
+    w</span>indow.devToolsExtension ? <span class="branch-0 cbranch-no" title="branch not covered" >window.devToolsExtension() : f =&gt; f // for chrome Redux Dev Tools.
+);
+&nbsp;
+function configureStore(initialState) {
+  // Note: only Redux &gt;= 3.1.0 supports passing enhancer as third argument.  if (window !== undefined){ // need this line because tests do not run in browser
+&nbsp;
+  // See https://github.com/rackt/redux/releases/tag/v3.1.0
+  const storeFunc = createStore(rootReducer, initialState, enhancer);
+&nbsp;
+  return storeFunc;
+}
+&nbsp;
+// since both the redux application store and each react component can have a "state,"
+// it can get confusing when referring to them.
+// I'll be referring to the store (here) as "store", or "application store", and the
+// values currently in the storea as the "application state."
+// For components, I'll likely refer to it as the "state" or "component state".
+&nbsp;
+const store = configureStore();
+&nbsp;
+// We may want to take a "snapshot" of the store and save it somewhere, so that we can load
+// an entirely different store.  For example,
+// a progam might be in the middle of an interaction, but the user may wish to
+// pause it to view a tutorial. Instead of coding an entirely different interface
+// for the tutorial, we can take a backup snapshot, hydrate() the store with tutorial
+// data, and when we are done, restore the state we saved.
+//
+// Naturally, we MUST make sure we've got a confirmed backup store before we continue on.
+// this uses a closure so that the backup is stored in memory outside of the function.
+// For semi-obvious reasons, you typically don't want to put your own backup state of the
+// store into the store itself.  Sure, it could be done.  But it seems a bit complex.
+var backup = {};
+function backupStore(){
+  backup = store.getState();
+  // note that we are not *returning* the backup. That's not the point of this function.
+  // we're just making sure that we have a backup in scope for restoreStore().
+}
+&nbsp;
+// Rather than creating a seperate action to restore the store, since "backup" is
+// in scope, let's just dispatch the hydrate action directly.
+function restoreStore(){
+  store.dispatch({type: HYDRATE, payload: backup});
+}
+&nbsp;
+var getStore = store.getState;
+&nbsp;
+export {
+  store as default,
+  backupStore,
+  restoreStore,
+  getStore,
+  backup,
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun May 15 2016 05:43:11 GMT-0500 (CDT)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
