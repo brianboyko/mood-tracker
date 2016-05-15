@@ -1,42 +1,46 @@
 require('./setup.js')
-import {assert} from 'chai';
+import {expect} from 'chai';
 import _ from 'lodash';
 import store, {backupStore, restoreStore, getStore, backup} from '../client/src/js/store/storeConfig';
 import actions from '../client/src/js/actions'
 
-
 describe('store', () => {
-  let test = {type: 'ADD_ONE'};
-  let clearTest = {type: 'CLEAR_TO_DEFAULT'}
-
-  it('should have a dispatch and getState function', () => {
-    assert(store.hasOwnProperty('dispatch'));
-    assert(store.hasOwnProperty('getState'));
-  })
-  it('getStore() should be identical to store.getState()', () => {
-    assert(_.isEqual(store.getState(), getStore()))
+  beforeEach(() => {
+    store.dispatch(actions.clearToDefault());
   })
   it('should clear to default', () => {
-    store.dispatch(test);
-    store.dispatch(clearTest);
-    assert(_.isEqual(store.getState(), {mytest: 0}))
+    store.dispatch(actions.hydrate({mytest:3}));
+    expect(store.getState()).to.eql({mytest: 3})
+    store.dispatch(actions.clearToDefault());
+    expect(store.getState()).to.eql({mytest: 0})
+  })
+  it('should have a dispatch and getState function', () => {
+    expect(store.hasOwnProperty('dispatch')).to.be.true;
+    expect(store.hasOwnProperty('getState')).to.be.true;
+  })
+  it('getStore() should be identical to store.getState()', () => {
+    expect(store.getState()).to.eql(getStore())
   })
   it('even (and especially) after changes', () => {
-    store.dispatch(test);
     store.dispatch(actions.addOne());
-    assert(_.isEqual(store.getState(), {mytest: 2}));
-    assert(_.isEqual(store.getState(), getStore()))
+    store.dispatch(actions.addOne());
+    expect(store.getState()).to.eql({mytest: 2})
+    expect(store.getState()).to.eql(getStore())
   })
   it('should backup the store when needed', () => {
     backupStore();
-    assert(_.isEqual(store.getState(), backup));
-    assert(_.isEqual({mytest: 2}, backup));
-    store.dispatch(test);
-    assert(_.isEqual({mytest: 3}, store.getState()))
-    assert(_.isEqual({mytest: 2}, backup));
+    expect(store.getState()).to.eql(backup)
+    expect({mytest:0}).to.eql(backup)
+    store.dispatch(actions.addOne());
+    expect(store.getState()).to.eql({mytest: 1})
+    expect({mytest:0}).to.eql(backup)
   })
   it('should restore the store from backup when called upon', () => {
+    store.dispatch(actions.addOne());
+    backupStore();
+    expect(store.getState()).to.eql({mytest: 1})
+    store.dispatch(actions.hydrate({mytest:3}));
     restoreStore();
-    assert(_.isEqual(store.getState(), {mytest: 2}));
+    expect(store.getState()).to.eql({mytest: 1})
   })
 })

@@ -1,6 +1,5 @@
 require('./setup.js')
 
-import {assert} from 'chai';
 import expect from 'expect'
 import _ from 'lodash';
 import { reduxify } from '../client/src/js/utilities/reduxify'
@@ -33,6 +32,7 @@ describe('Reduxify', () => {
       <Child />
     </Provider>
   )
+
   it('should add the store to the child context', () => {
     const spy = expect.spyOn(console, 'error')
     spy.destroy()
@@ -50,16 +50,17 @@ describe('Reduxify', () => {
     const child = TestUtils.findRenderedComponentWithType(tree, Child)
     expect(_.isEqual(child.dispatchProps.actions, actions.default))
   })
-  it('should add the actions to the child context', () => {
+  it('should add both at the same time', () => {
     const spy = expect.spyOn(console, 'error')
 
     spy.destroy()
     expect(spy.calls.length).toBe(0)
 
     const child = TestUtils.findRenderedComponentWithType(tree, Child)
-    store.dispatch(actions.default.clearToDefault);
-    // console.log(store.getState());
-    // console.log(child)
-    expect(_.isEqual(child.dispatchProps.actions, actions.default))
+    let expected = store.getState()
+    expected.store = store;
+    expected.actions = actions.default;
+    expected.dispatch = store.dispatch;
+    expect(_.isEqual(child.mergedProps.actions, expected))
   })
 })

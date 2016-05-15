@@ -25,8 +25,8 @@ import createLogger from 'redux-logger';
 
 // import { localLog, logToLocal } from '../utilities/loggers'
 
-// We only need
-import { HYDRATE } from '../constants/actions'
+import * as actions from '../actions/index'
+let {hydrate} = actions.default
 
 let logger = createLogger({
   duration: true,
@@ -92,7 +92,8 @@ function backupStore(){
 // Rather than creating a seperate action to restore the store, since "backup" is
 // in scope, let's just dispatch the hydrate action directly.
 function restoreStore(){
-  store.dispatch({type: HYDRATE, payload: backup});
+  console.log("this is the backup", backup)
+  store.dispatch(hydrate(backup));
 }
 
 var getStore = store.getState;
