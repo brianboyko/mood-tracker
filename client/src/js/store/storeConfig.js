@@ -92,7 +92,6 @@ function backupStore(){
 // Rather than creating a seperate action to restore the store, since "backup" is
 // in scope, let's just dispatch the hydrate action directly.
 function restoreStore(){
-  console.log("this is the backup", backup)
   store.dispatch(hydrate(backup));
 }
 

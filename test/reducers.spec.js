@@ -14,15 +14,18 @@ import { CLEAR_TO_DEFAULT } from '../client/src/js/constants/actions';
 describe('reducers', () => {
   describe('mytest reducer', () => {
     it('should return state if passed undefined', () => {
-      expect(_.isEqual(mytest(undefined, {type: "Not a type"}), 0));
-      expect(_.isEqual(mytest(44, {type: "Not a type"}), 44))
-    });store
+      expect(mytest(undefined, {type: "Not a type"})).to.equal(0)
+      expect(mytest(44, {type: "Not a type"})).to.equal(44)
+    });
     it('should add one if passed "addOne" action or object', () => {
-      expect(_.isEqual(mytest(33, actions.addOne()), 34));
-      expect(_.isEqual(mytest(33, {type: 'ADD_ONE'}), 34));
+      expect(mytest(44, actions.addOne())).to.equal(45)
+      expect(mytest(44, {type: 'ADD_ONE'})).to.equal(45)
     });
     it('should be changed if hydrated', () => {
-      expect(_.isEqual(mytest(32, actions.hydrate({mytest:22})), 22));
+      expect(mytest(32, actions.hydrate({mytest:22}))).to.equal(22);
+    });
+    it('should NOT be changed if hydrated without a mytest property', () => {
+      expect(mytest(32, actions.hydrate({notToday:22}))).to.not.equal(22);
     });
   });
 
